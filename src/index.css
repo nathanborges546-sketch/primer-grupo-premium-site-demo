@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors - Primer Grupo Blasco */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Primary: Deep professional blue */
+    --primary: 213 65% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Warm neutral */
+    --secondary: 35 20% 95%;
+    --secondary-foreground: 215 25% 15%;
+
+    /* Muted: Soft gray-blue */
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 15% 45%;
+
+    /* Accent: Warm gold for CTAs */
+    --accent: 38 85% 55%;
+    --accent-foreground: 215 25% 12%;
+
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 213 65% 32%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --hero-overlay: 213 65% 20%;
+    --section-cream: 40 33% 97%;
+    --text-light: 210 15% 60%;
+    
+    /* Sidebar - using brand colors */
+    --sidebar-background: 213 65% 32%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 38 85% 55%;
+    --sidebar-primary-foreground: 215 25% 12%;
+    --sidebar-accent: 213 55% 40%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 213 50% 40%;
+    --sidebar-ring: 38 85% 55%;
+  }
+
+  .dark {
+    --background: 215 25% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 13%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 25% 13%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 213 65% 55%;
+    --primary-foreground: 215 25% 10%;
+
+    --secondary: 215 20% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 20% 20%;
+    --muted-foreground: 210 15% 65%;
+
+    --accent: 38 85% 55%;
+    --accent-foreground: 215 25% 10%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
+    --ring: 213 65% 55%;
+
+    --hero-overlay: 213 65% 10%;
+    --section-cream: 215 20% 12%;
+    --text-light: 210 15% 55%;
+
+    --sidebar-background: 215 25% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 38 85% 55%;
+    --sidebar-primary-foreground: 215 25% 10%;
+    --sidebar-accent: 215 20% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 215 20% 18%;
+    --sidebar-ring: 38 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--hero-overlay) / 0.85) 0%,
+      hsl(var(--primary) / 0.75) 100%
+    );
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(213 55% 45%) 100%
+    );
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
